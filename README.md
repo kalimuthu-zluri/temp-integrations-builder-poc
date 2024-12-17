@@ -17,5 +17,5 @@ Modules
 ![image](https://github.com/user-attachments/assets/12c0fb24-c598-4759-9c09-1e0b489dfe51)
 
 Assigned Views
-Jatin: DAG, Request Config
-Kali: Var Options, Pre Proc, Post Proc
+- Jatin: DAG, Request Config
+- Kali: Var Options, Pre Proc, Post Proc
