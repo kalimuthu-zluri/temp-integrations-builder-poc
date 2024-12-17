@@ -1,6 +1,6 @@
 from nicegui import ui
 
-class DynamicNodeManager:
+class NodeView:
     def __init__(self):
         # Initialize the node mapping
         self.node_mapping = {

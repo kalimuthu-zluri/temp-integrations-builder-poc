@@ -1,6 +1,6 @@
 from nicegui import ui
 from nicegui.events import ValueChangeEventArguments
-from views.nodeTreeView import DynamicNodeManager
+from views.nodeView import NodeView
 from views.requestView import RequestView
 from views.variableOptionsView import VariableOptionsView
 from views.dataMapperView import DataMapperView
@@ -12,36 +12,42 @@ def show(event: ValueChangeEventArguments):
     ui.notify(f"{name}: {event.value}")
 
 
-with ui.splitter(value=30).classes("w-full h-screen no-wrap") as splitter:
-    with splitter.before:
-            node_manager = DynamicNodeManager()
-            node_manager.start()
+def initView(view):
+    view.start()
 
-    with splitter.after:
+
+full_stretch_class = "w-full h-full"
+
+with ui.splitter(value=30).classes("w-full h-screen") as navScreenDivider:
+    with navScreenDivider.before:
+        nodeView = NodeView()
+        initView(nodeView)
+
+    with navScreenDivider.after:
         with ui.splitter(horizontal=True, value=55).classes(
-            "w-full h-full no-wrap"
-        ) as splitter1:
+            full_stretch_class
+        ) as apiIODivider:
 
-            with splitter1.before:
+            with apiIODivider.before:
                 with ui.splitter(value=30).classes(
-                    "w-full h-full no-wrap"
-                ) as splitter2:
-                    with splitter2.after:
+                    full_stretch_class
+                ) as requestSplitter:
+                    with requestSplitter.after:
                         requestView = RequestView()
-                        requestView.start()
-                        
-                    with splitter2.before:
+                        initView(requestView)
+
+                    with requestSplitter.before:
                         variableOptionsView = VariableOptionsView()
-                        variableOptionsView.start()
-                        
-            with splitter1.after:
-                with ui.splitter().classes("w-full h-full no-wrap") as splitter:
-                    with splitter.before:
+                        initView(variableOptionsView)
+
+            with apiIODivider.after:
+                with ui.splitter().classes(full_stretch_class) as responseSplitter:
+                    with responseSplitter.before:
                         dataMapperView = DataMapperView()
-                        dataMapperView.start()
-                    with splitter.after:
+                        initView(dataMapperView)
+                    with responseSplitter.after:
                         dataProcessView = DataProcessView()
-                        dataProcessView.start()
+                        initView(dataProcessView)
 
 
 ui.run()
