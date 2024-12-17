@@ -1,7 +1,7 @@
 This repository includes py code for builder poc
 
 Views
-1) DAG - Done
+1) Entity List - Done
 2) Request Config - Done
 3) Var Options
 4) Pre Proc
@@ -17,5 +17,5 @@ Modules
 ![image](https://github.com/user-attachments/assets/12c0fb24-c598-4759-9c09-1e0b489dfe51)
 
 Assigned Views
-- Jatin: DAG, Request Config
+- Jatin: Entity List, Request Config
 - Kali: Var Options, Pre Proc, Post Proc
